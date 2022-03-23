@@ -11,8 +11,10 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 /** Add your docs here. */
 public class Arm {
 
-    TalonFX arm;
-
+    TalonFX arm = new TalonFX(6);;
+    
+    
+/*
     public Arm(TalonFX a){
     arm = a;
     arm.setInverted(false);
@@ -22,14 +24,22 @@ public class Arm {
     arm.configClearPositionOnQuadIdx(false, 0);
     arm.setSelectedSensorPosition(0, 0, 0);
     }
-
-    public void armGoDown(){
+*/
+    public static void armInit(){
+        arm.setInverted(false);
+        arm.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 10,15,1));
+        arm.configClearPositionOnLimitF(false, 0);
+        arm.configClearPositionOnLimitR(false, 0);
+        arm.configClearPositionOnQuadIdx(false, 0);
+        arm.setSelectedSensorPosition(0, 0, 0);
+    }
+    public static void armGoDown(){
         arm.set(ControlMode.PercentOutput, -.3);
     }
-    public void armStop(){
+    public static void armStop(){
         arm.set(ControlMode.PercentOutput, 0);
     }
-    public void armGoUp(){
+    public static void armGoUp(){
         arm.set(ControlMode.PercentOutput, .4);
     }
 }
