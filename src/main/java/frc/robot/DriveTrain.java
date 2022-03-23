@@ -51,27 +51,27 @@ public class DriveTrain {
     driveLeftA.configClearPositionOnQuadIdx(false, 0);
     }
 
-    public void driveForward(double power){
+    public static void driveForward(double power){
         driveLeftA.set(ControlMode.PercentOutput, power);
         driveRightA.set(ControlMode.PercentOutput, power);
       }
       
-      public void turnLeft(double power){
+      public static void turnLeft(double power){
       
         driveLeftA.set(ControlMode.PercentOutput, -power);
         driveRightA.set(ControlMode.PercentOutput, power);
       
       }
-      public void turnRight(double power){
+      public static void turnRight(double power){
       
         driveLeftA.set(ControlMode.PercentOutput, power);
         driveRightA.set(ControlMode.PercentOutput, -power);
       }
-      public void forwardTurnLeft(double power){
+      public static void forwardTurnLeft(double power){
         driveLeftA.set(ControlMode.PercentOutput, -power);
         driveRightA.set(ControlMode.PercentOutput, +power);
       }
-      public void forwardTurnRight(double power){
+      public static void forwardTurnRight(double power){
         driveLeftA.set(ControlMode.PercentOutput, +power);
         driveRightA.set(ControlMode.PercentOutput, -power);
       }
