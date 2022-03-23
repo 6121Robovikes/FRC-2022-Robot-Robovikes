@@ -12,14 +12,12 @@ public class Intake {
     static VictorSPX Motor = new VictorSPX(5);
 
 public static void OhmNom() {
-    Motor.set(ControlMode.PercentOutput, .5);
-}
+    Motor.set(ControlMode.PercentOutput, Constant.intakeSpeed);
+} // end ohm nom
 public static void  PewPew(double  Speed) {
     Motor.set(ControlMode.PercentOutput, -Speed);
-
-}
+} // end pewpew
 public static void StopIntake() {
     Motor.set(ControlMode.PercentOutput, 0);
-    
-}
-}
+} // end stop intake
+} // end class intake

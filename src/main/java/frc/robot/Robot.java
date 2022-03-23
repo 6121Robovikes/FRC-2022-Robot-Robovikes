@@ -1,38 +1,17 @@
 package frc.robot;
 
-//import java.sql.Driver;
-
-//import javax.lang.model.util.ElementScanner6;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-//import com.ctre.phoenix.motorcontrol.StatorCurrentLimitConfiguration;
-//import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
-//import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
-// import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-// import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-// import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-// import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.DigitalInput;
-//import com.revrobotics.CANSparkMax;
-//import com.revrobotics.CANSparkMax.IdleMode;
-//import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-//import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-
-//new import
 import edu.wpi.first.wpilibj.XboxController;
-//import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-//import edu.wpi.first.wpilibj.interfaces.Gyro;
-//import edu.wpi.first.wpilibj.SPI;
-
 
 public class Robot extends TimedRobot {
   
@@ -44,10 +23,8 @@ public class Robot extends TimedRobot {
   DigitalInput upwardlimitswitch = new DigitalInput(1);
   
   Timer m_timer = new Timer();
-  //TalonFX a = new TalonFX(6);
-  //Arm arm = new Arm(a);
-  //double forward = 0;
-  //double turn = 0;
+  double forward = 0;
+  double turn = 0;
   boolean speedClutch = false;
   private final SendableChooser<String> chooser = new SendableChooser<>();
   private String autoSelected;
@@ -55,46 +32,12 @@ public class Robot extends TimedRobot {
   
   UsbCamera camera1;
   UsbCamera camera2;
-  //private static final double kAngleSetpoint = 0.0;
-	//private static final double kP = 0.005; // propotional turning constant
-  
-
-   
-
-
-  // private final DifferentialDrive m_robotDrive = new DifferentialDrive(driveLeftA, driveRightA);
   Joystick operator = new Joystick(1);
   XboxController driver = new XboxController(0);
 
-  //Constants for controlling the arm. consider tuning these for your particular robot
- /**  final double armHoldUp = 0.08;
-  final double armHoldDown = 0.13;
-  final double armTravel = 0.5;
-
-  final double armTimeUp = 0.5;
-  final double armTimeDown = 0.35;
-  boolean startleft = false;
-  boolean startRight = false;
-  //Varibles needed for the code
-  boolean armUp = true; //Arm initialized to up because that's how it would start a match
-  boolean burstMode = false;
-  double lastBurstTime = 0;
-  DigitalInput downwardlimitswitch = new DigitalInput(0);
-  DigitalInput upwardlimitswitch = new DigitalInput(1);
-  boolean godown = false;
-  boolean goup = false;
-  double autoStart = 0;
-  boolean goForAuto = false;
-*/
-
-  /**
-   * This function is run when the robot is first started up and should be used for any
-   * initialization code.
-   */
-
-
-
-
+  /*
+  *  this function is called when the robot first initializes
+  */
   @Override
   public void robotInit() {
 
@@ -163,7 +106,7 @@ public class Robot extends TimedRobot {
     } // end if user not holding right bumper
 
     if(downwardlimitswitch.get()==false){
-      arm.armStop();
+      Arm.armStop();
     SmartDashboard.putString("downlimit switch", "stop the arm");
     } // end if downwardlimitswitch pressed
     else{
@@ -171,7 +114,7 @@ public class Robot extends TimedRobot {
       
     } // end else downwardlimitswitch free
     if(upwardlimitswitch.get()==false){
-      arm.armStop();
+      Arm.armStop();
     SmartDashboard.putString("uplimit switch", "stop the arm");
     } // end if upwardlimitswitch pressed
     else{
@@ -183,16 +126,16 @@ public class Robot extends TimedRobot {
   * arm movement controls
   */
     if(operator.getRawButton(16) && downwardlimitswitch.get() == true){ 
-      arm.armGoDown();
+      Arm.armGoDown();
       SmartDashboard.putString("arm position", "down");
      } // end if button 16 pressed and downwardlimitswitch is free
      
      if(operator.getRawButton(11) && upwardlimitswitch.get() == true){
-      arm.armGoUp();
+      Arm.armGoUp();
     } // end if button 11 pressed and downwardlimitswitch is free
 
     if(operator.getRawButton(11) == false && operator.getRawButton(16) == false){
-      arm.armStop();
+      Arm.armStop();
       SmartDashboard.putString("arm motion ", "stop");
     } // end if neither 11 or 16 are pressed
     else{

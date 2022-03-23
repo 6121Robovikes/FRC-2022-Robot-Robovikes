@@ -5,7 +5,6 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -23,21 +22,13 @@ public class DriveTrain {
 
 
     public static void DriveTrainInit(){
-        //initialize the motors from the constructor
-    // WPI_TalonSRX driveLeftA = la;
-    // WPI_TalonSRX driveLeftB = lb;
-    // WPI_TalonSRX driveRightA = ra;
-    // WPI_TalonSRX driveRightB = rb;
         
 
     driveLeftA.setInverted(false);
     driveLeftB.setInverted(false);
-    driveRightA.setInverted(true);  // ??????????????
+    driveRightA.setInverted(true);
     driveRightB.setInverted(true);
    
-    //SmartDashboard.putBoolean("right auton", startRight);
-    //SmartDashboard.putBoolean("left auton", startleft);
-    
     // configuring the b motor to follow the a motor
     driveLeftB.follow(driveLeftA);
     driveRightB.follow(driveRightA);
@@ -54,27 +45,27 @@ public class DriveTrain {
     public static void driveForward(double power){
         driveLeftA.set(ControlMode.PercentOutput, power);
         driveRightA.set(ControlMode.PercentOutput, power);
-      }
+      } // end drive forward command
       
       public static void turnLeft(double power){
       
         driveLeftA.set(ControlMode.PercentOutput, -power);
         driveRightA.set(ControlMode.PercentOutput, power);
       
-      }
+      } // end turn left command
       public static void turnRight(double power){
       
         driveLeftA.set(ControlMode.PercentOutput, power);
         driveRightA.set(ControlMode.PercentOutput, -power);
-      }
+      } // end turn right command
       public static void forwardTurnLeft(double power){
         driveLeftA.set(ControlMode.PercentOutput, -power);
         driveRightA.set(ControlMode.PercentOutput, +power);
-      }
+      } // end forward turn left command (right now is the same as turn left)
       public static void forwardTurnRight(double power){
         driveLeftA.set(ControlMode.PercentOutput, +power);
         driveRightA.set(ControlMode.PercentOutput, -power);
-      }
+      } // end forward turn right command (right now is the same as turn right)
       
 
 }
