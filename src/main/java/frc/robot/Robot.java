@@ -8,21 +8,17 @@ import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.XboxController;
 
 public class Robot extends TimedRobot {
-  
-  
   /*
   *  sensor instantiation
   */
   DigitalInput downwardlimitswitch = new DigitalInput(0);
   DigitalInput upwardlimitswitch = new DigitalInput(1);
   
-  Timer m_timer = new Timer();
   double forward = 0;
   double turn = 0;
   boolean speedClutch = false;
@@ -57,8 +53,8 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     // reset and start timer
-    m_timer.reset();
-    m_timer.start();
+    Constant.m_timer.reset();
+    Constant.m_timer.start();
     
   }
  
@@ -69,14 +65,15 @@ public class Robot extends TimedRobot {
    /*
     * LeftAunton selected
    */
+    SmartDashboard.putNumber("M_timer: ", Constant.m_timer.get());
     if(autoSelected.equals(Constant.kLeftAuton)){
-      leftAuton();
+      LeftAuton.leftAuton();
     }else if(autoSelected.equals(Constant.kRightAuton)){
-      rightAuton();
+      RightAuton.rightAuton();
     }else if(autoSelected.equals(Constant.kCenterAuton)){
-      centerAuton();
+      CenterAuton.centerAuton();
     }else{
-      middleAuton();
+      MiddleAuton.middleAuton();
     }
 
   } // end autonomous Periodic
@@ -159,7 +156,7 @@ public class Robot extends TimedRobot {
       } // else not button 12 or 13 turn off shooter
       
       
-    }
+    } // end teleop periodic
 
   @Override
   public void disabledInit() {
@@ -171,89 +168,5 @@ public class Robot extends TimedRobot {
     
     Intake.StopIntake();
    
-  }
-
- 
-  public void leftAuton(){
-  //starting on the left side
-   
-  if (m_timer.get() < 0){
-   DriveTrain.driveForward(0);
-  } else if(m_timer.get() > 0 & m_timer.get() < 1.5){
-    DriveTrain.driveForward(.3);
-  }
-  else if(m_timer.get() > 1.5 & m_timer.get() < 1.9){
-    DriveTrain.turnLeft(.3);
-  }
-  else if(m_timer.get() > 1.9 & m_timer.get() < 4.4){
-   Intake.PewPew(Constant.shooterSpeed);
-  }
-  else if(m_timer.get() > 4.4 & m_timer.get() < 8.4){
-    DriveTrain.driveForward(-.4);
-   }
-  else if(m_timer.get() > 8.4);
-  DriveTrain.driveForward(0);
-  }
-
-  public void rightAuton(){
-  //starting on right side
-  if (m_timer.get() < 0){
-    DriveTrain.driveForward(0);
-} else if(m_timer.get() > 0 & m_timer.get() < 1.5){
-  DriveTrain.driveForward(.3);
- }
- else if(m_timer.get() > 1.5 & m_timer.get() < 1.9){
-  DriveTrain.turnRight(.3);
- } 
- else if(m_timer.get() > 1.9 & m_timer.get() < 4.4){
-   Intake.PewPew(Constant.shooterSpeed);
- }
- else if(m_timer.get() > 4.4 & m_timer.get() < 8.4){
-  DriveTrain.driveForward(-.4);
- }
- else if(m_timer.get() > 8.4);
- DriveTrain.driveForward(0);
-//else if(m_timer.get() > 5 & m_timer.get() < 9){
- //  turnLeft(.5);
-////}
-// else if(m_timer.get() > 9 & m_timer.get() < 11){
-  // driveForward(.3);
- //}
-}
-  public void centerAuton(){
-// turn center
-if (m_timer.get() < 0){
-  DriveTrain.driveForward(0);
-}
-  else if(m_timer.get() > 0 & m_timer.get() < 2){
-    Intake.PewPew(Constant.shooterSpeed);
-}
-  else if(m_timer.get() > 2 & m_timer.get() < 8){
-    DriveTrain.driveForward(-.3);
-}
-  else if(m_timer.get() > 8){
-    DriveTrain.driveForward(0);
-  }
-  
-
-}
-  public void middleAuton(){
-    if (m_timer.get() < 0){
-      DriveTrain.driveForward(0);
-    }
-      else if(m_timer.get() > 0 & m_timer.get() < 2){
-        Intake.PewPew(Constant.shooterSpeed);;
-    }
-      else if(m_timer.get() > 2 & m_timer.get() < 6){
-        DriveTrain.driveForward(0);
-    }
-    else if(m_timer.get() > 6 & m_timer.get() < 12){
-      DriveTrain.driveForward(-.3);
-
-    }
-      else if(m_timer.get() > 12){
-        DriveTrain.driveForward(0);
-  }
-
-  }
-}
+  } // end disabled init
+} // end robot

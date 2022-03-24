@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Timer;
+
 /** Add your docs here. */
 public class Constant {
 
@@ -17,6 +19,7 @@ public class Constant {
     public static final String kLeftAuton = "Left Auton";
     public static final String kRightAuton = "Right Auton";
     public static final String kCenterAuton = "Center Auton";
-
+    public static Timer m_timer = new Timer();
+  
   
 } // end class constant
