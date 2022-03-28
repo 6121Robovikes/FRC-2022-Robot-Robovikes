@@ -10,7 +10,8 @@ import edu.wpi.first.wpilibj.Timer;
 public class Constant {
 
     public static final double speedMultiplier = 0.63; // max speed multiplier of drivetrain
-    public static final double slowSpeed = 0.5; // speed of drivetrain when trigger held
+    public static final double slowSpeed = 0.55; // speed of drivetrain when trigger held
+    public static final double slowSpeedTurn = 0.7; // speed of drivetrain when trigger held
     public static final double turnMultiplier = 0.9; 
     public static final double shooterSpeed = 0.9; // speed for intake while shooting
     public static final double slowShootSpeed = 0.7; // speed for intake while defense throwing

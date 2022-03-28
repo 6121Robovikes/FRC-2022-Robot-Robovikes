@@ -96,7 +96,7 @@ public class Robot extends TimedRobot {
     
          //Speed Clutch Control
     if(driver.getRightBumper() == true){
-      DriveTrain.differentialDrive.arcadeDrive((forward * Constant.slowSpeed), (turn * Constant.slowSpeed));
+      DriveTrain.differentialDrive.arcadeDrive((forward * Constant.slowSpeed), (turn * Constant.slowSpeedTurn));
     } // end if driver holding right bumper
     else{
       DriveTrain.differentialDrive.arcadeDrive((forward * Constant.speedMultiplier), (turn *Constant.turnMultiplier));
