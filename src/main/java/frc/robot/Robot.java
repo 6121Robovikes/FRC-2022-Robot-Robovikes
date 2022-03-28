@@ -2,29 +2,40 @@ package frc.robot;
 
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.XboxController;
 
+
 public class Robot extends TimedRobot {
   /*
   *  sensor instantiation
   */
-  DigitalInput downwardlimitswitch = new DigitalInput(0);
-  DigitalInput upwardlimitswitch = new DigitalInput(1);
+  static DigitalInput downwardlimitswitch = new DigitalInput(3);
+  static DigitalInput upwardlimitswitch = new DigitalInput(4);
+  AnalogInput ultrasonicLeft= new AnalogInput(0);
+  AnalogInput ultrasonicRight = new AnalogInput(1);
+  DigitalOutput ultrasonicLeftTrigPin = new DigitalOutput(0);
+  DigitalOutput ultrasonicRightTrigPin = new DigitalOutput(1);
   
   double forward = 0;
   double turn = 0;
   boolean speedClutch = false;
   private final SendableChooser<String> chooser = new SendableChooser<>();
-  private String autoSelected;
+  //private String autoSelected;
   
+  double leftRawValue = ultrasonicLeft.getValue();
+  double rightRawValue = ultrasonicRight.getValue();
+  double voltageScaleFactor= 5/RobotController.getVoltage5V();
+
   
   UsbCamera camera1;
   UsbCamera camera2;
@@ -44,10 +55,13 @@ public class Robot extends TimedRobot {
     camera2 = CameraServer.startAutomaticCapture(1);
     
     //Auton selector in smartdashboard
-    chooser.setDefaultOption("Middle Auton", Constant.kMiddleAuton);
+    chooser.setDefaultOption("two ball auton", Constant.ktwoballAuton);
     chooser.addOption("Left Auton", Constant.kLeftAuton);
     chooser.addOption("Right Auton", Constant.kRightAuton);
     chooser.addOption("Center Auton", Constant.kCenterAuton);
+    chooser.addOption("two ball auton", Constant.ktwoballAuton);
+    SmartDashboard.putData(chooser);
+    SmartDashboard.putString("Auton selected: ", chooser.getSelected());
   }
 
   @Override
@@ -55,6 +69,7 @@ public class Robot extends TimedRobot {
     // reset and start timer
     Constant.m_timer.reset();
     Constant.m_timer.start();
+    TwoBallAutonA.init();
     
   }
  
@@ -66,13 +81,18 @@ public class Robot extends TimedRobot {
     * LeftAunton selected
    */
     SmartDashboard.putNumber("M_timer: ", Constant.m_timer.get());
-    if(autoSelected.equals(Constant.kLeftAuton)){
+    if(chooser.getSelected().equals(Constant.kLeftAuton)){
       LeftAuton.leftAuton();
-    }else if(autoSelected.equals(Constant.kRightAuton)){
+    }else if(chooser.getSelected().equals(Constant.kRightAuton)){
       RightAuton.rightAuton();
-    }else if(autoSelected.equals(Constant.kCenterAuton)){
+    }else if(chooser.getSelected().equals(Constant.kCenterAuton)){
       CenterAuton.centerAuton();
-    }else{
+    }
+    else if(chooser.getSelected().equals(Constant.ktwoballAuton)){
+      
+      TwoBallAutonA.runAuton();
+    }
+    else{
       MiddleAuton.middleAuton();
     }
 
@@ -87,7 +107,25 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
+  
+  ultrasonicLeftTrigPin.set(true);
+  ultrasonicRightTrigPin.set(false);
+   leftRawValue = ultrasonicLeft.getValue();
 
+  ultrasonicLeftTrigPin.set(false);
+  ultrasonicRightTrigPin.set(true);
+  rightRawValue = ultrasonicRight.getValue();
+
+  ultrasonicLeftTrigPin.set(false);
+  ultrasonicRightTrigPin.set(false);
+  voltageScaleFactor= 5/RobotController.getVoltage5V();
+  SmartDashboard.putNumber("voltageScaleFactor 5/: ", voltageScaleFactor);
+  SmartDashboard.putNumber("rightRawValue: ", rightRawValue);
+  SmartDashboard.putNumber("leftRawValue: ", leftRawValue);
+  double leftDistanceCentimeters = leftRawValue * voltageScaleFactor * 0.125;
+  double rightDistanceCentimeters = rightRawValue * voltageScaleFactor * 0.125;
+  SmartDashboard.putNumber("left distance", (int)leftDistanceCentimeters);
+  SmartDashboard.putNumber("right distance", (int)rightDistanceCentimeters);
     forward = -driver.getLeftY();
     turn = driver.getRightX() * Constant.speedMultiplier; // moved from negative to positive
     
