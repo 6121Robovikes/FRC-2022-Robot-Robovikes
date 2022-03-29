@@ -31,50 +31,53 @@ public class TwoBallAutonA {
         SmartDashboard.putString("Auton step :  ", "1 Arm going down");
         SmartDashboard.putBoolean("downwardlimitswitch", Robot.downwardlimitswitch.get());
 if ( Robot.downwardlimitswitch.get() == true) {
-            Arm.armGoDown();
+        //    Arm.armGoDown();
             SmartDashboard.putString("Auton step : ", "1 Arm going down");
         }
         else{
         SmartDashboard.putString("Auton step : ", "1 Arm stopped");   
-        Arm.armStop();
+      //  Arm.armStop();
         }
     }
-    if (Constant.m_timer.get() > 2 && Constant.m_timer.get() <= 3){
+    if (Constant.m_timer.get() > 2 && Constant.m_timer.get() <= 2.6){
         SmartDashboard.putString("Auton step : ", "2 intake on drive forward");
-        Arm.armStop();
-        Intake.OhmNom();
+      //  Arm.armStop();
+        //Intake.OhmNom();
         DriveTrain.driveForward(.5);
        }  
-       if (Constant.m_timer.get() > 3 && Constant.m_timer.get() <= 4) {
+       if (Constant.m_timer.get() > 2.6 && Constant.m_timer.get() <= 3.6) {
         SmartDashboard.putString("Auton step : ", "3 stop");
            DriveTrain.driveForward(0);
        }
-       if (Constant.m_timer.get() > 4 && Constant.m_timer.get() >= 6) {
+       if (Constant.m_timer.get() > 3.6 && Constant.m_timer.get() <= 5.6) {
         if(Robot.upwardlimitswitch.get() == true) {
-            Intake.StopIntake();
-            Arm.armGoUp();
+           // Intake.StopIntake();
+           // Arm.armGoUp();
         SmartDashboard.putString("Auton step : ", "4 Arm going up");
 
         }
         else{
             SmartDashboard.putString("Auton step : ", "4 Arm stopped");   
-            Arm.armStop();
+           // Arm.armStop();
            
         }
 
       }
-      if (Constant.m_timer.get() > 6 && Constant.m_timer.get() < 7) {
-          DriveTrain.differentialDrive.arcadeDrive(0, .5);
+      if (Constant.m_timer.get() > 5.6 && Constant.m_timer.get() < 7.2) {
+          DriveTrain.differentialDrive.arcadeDrive(0, .48);
       }
-      if(Constant.m_timer.get() > 7 && Constant.m_timer.get() > 8) {
+      if(Constant.m_timer.get() > 7.2 && Constant.m_timer.get() > 8.2) {
         DriveTrain.driveForward(0);
       }
-     if(Constant.m_timer.get() > 8 && Constant.m_timer.get() > 9.5) {
-         DriveTrain.differentialDrive.arcadeDrive(.5, 0);
+     if(Constant.m_timer.get() > 8.2 && Constant.m_timer.get() > 10.2) {
+         DriveTrain.driveForward(.5);
          // move longer and turn less
      }
-     if(Constant.m_timer.get() > 9.5 && Constant.m_timer.get() > 10) {
-         DriveTrain.differentialDrive.arcadeDrive(0, 0);
+     if(Constant.m_timer.get() > 10.2 && Constant.m_timer.get() > 11.8) {
+         DriveTrain.driveForward(0);
+     }
+     if(Constant.m_timer.get() > 11.8) {
+         Intake.PewPew(Constant.shooterSpeed);
      }
     }
 }

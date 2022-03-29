@@ -47,7 +47,7 @@ public class DriveTrain {
         //driveRightA.set(ControlMode.PercentOutput, power);
         differentialDrive.arcadeDrive(power, 0);
       } // end drive forward command
-      
+      /*
       public static void turnLeft(double power){
       
         driveLeftA.set(ControlMode.PercentOutput, -power);
@@ -69,4 +69,6 @@ public class DriveTrain {
       } // end forward turn right command (right now is the same as turn right)
       
 
+      */
 }
+

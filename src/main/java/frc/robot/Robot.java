@@ -55,11 +55,12 @@ public class Robot extends TimedRobot {
     camera2 = CameraServer.startAutomaticCapture(1);
     
     //Auton selector in smartdashboard
-    chooser.setDefaultOption("two ball auton", Constant.ktwoballAuton);
+    chooser.setDefaultOption("two ball auton", Constant.ktwoballAutona1);
     chooser.addOption("Left Auton", Constant.kLeftAuton);
     chooser.addOption("Right Auton", Constant.kRightAuton);
     chooser.addOption("Center Auton", Constant.kCenterAuton);
-    chooser.addOption("two ball auton", Constant.ktwoballAuton);
+    chooser.addOption("two ball auton a1", Constant.ktwoballAutona1);
+    chooser.addOption("two ball auton a2", Constant.ktwoballAutona2);
     SmartDashboard.putData(chooser);
     SmartDashboard.putString("Auton selected: ", chooser.getSelected());
   }
@@ -88,9 +89,12 @@ public class Robot extends TimedRobot {
     }else if(chooser.getSelected().equals(Constant.kCenterAuton)){
       CenterAuton.centerAuton();
     }
-    else if(chooser.getSelected().equals(Constant.ktwoballAuton)){
+    else if(chooser.getSelected().equals(Constant.ktwoballAutona1)){
       
       TwoBallAutonA.runAuton();
+    }
+    else if(chooser.getSelected().equals(Constant.ktwoballAutona2)){
+      TwoBallAutonA2.runAuton();
     }
     else{
       MiddleAuton.middleAuton();

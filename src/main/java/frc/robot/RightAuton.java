@@ -37,7 +37,7 @@ public class RightAuton {
         }
        }
        else if(Constant.m_timer.get() > 8.4 & Constant.m_timer.get() < 10.4){
-       DriveTrain.turnLeft(.5);
+       //DriveTrain.turnLeft(.5);
        }
        else if(Constant.m_timer.get() > 10.4 & Constant.m_timer.get() < 12.4){
        DriveTrain.driveForward(.5);

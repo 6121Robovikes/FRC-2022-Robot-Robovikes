@@ -7,12 +7,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /** Add your docs here. */
-public class TwoBallAutonB {
-
-    public void twoBallAutonBInt() {   
-    Constant.m_timer.reset();
-    Constant.m_timer.start();
-    }
+public class TwoBallAutonA2 {
+    
+    
     public static void runAuton() {
         DriveTrain.differentialDrive.arcadeDrive(0,0);
         if (Constant.m_timer.get() <= 2) {
@@ -52,21 +49,35 @@ public class TwoBallAutonB {
     
           }
           if (Constant.m_timer.get() > 5.6 && Constant.m_timer.get() < 7.2) {
-              DriveTrain.differentialDrive.arcadeDrive(0, -.48);
+              DriveTrain.differentialDrive.arcadeDrive(0, .48);
+              //ball picked up and turning
           }
           if(Constant.m_timer.get() > 7.2 && Constant.m_timer.get() > 8.2) {
             DriveTrain.driveForward(0);
+            //stop turning
           }
          if(Constant.m_timer.get() > 8.2 && Constant.m_timer.get() > 10.2) {
              DriveTrain.driveForward(.5);
-             // move longer and turn less
+             //move forward after ball pickup turn
          }
-         if(Constant.m_timer.get() > 10.2 && Constant.m_timer.get() > 11.8) {
+         if(Constant.m_timer.get() > 10.2 && Constant.m_timer.get() > 12) {
              DriveTrain.driveForward(0);
+             //stop
          }
-         if(Constant.m_timer.get() > 11.8) {
-             Intake.PewPew(Constant.shooterSpeed);
+         if(Constant.m_timer.get() > 11.8 && Constant.m_timer.get() < 12.3) {
+             //Intake.PewPew(Constant.shooterSpeed);
+             DriveTrain.differentialDrive.arcadeDrive(0, -.5);
+             //align to goal turn
          }
+         
+         if(Constant.m_timer.get() >12.3 && Constant.m_timer.get() < 12.8) {
+             DriveTrain.driveForward(0);
+             //stop
+         }
+         if(Constant.m_timer.get() >12.3 && Constant.m_timer.get() < 12.8) {
+            DriveTrain.driveForward(.5);
+            //final drive to goal
+        }
         }
     }
         
@@ -74,4 +85,6 @@ public class TwoBallAutonB {
        
        
     
+
+
 

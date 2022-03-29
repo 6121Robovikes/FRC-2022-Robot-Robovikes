@@ -20,7 +20,8 @@ public class Constant {
     public static final String kLeftAuton = "Left Auton";
     public static final String kRightAuton = "Right Auton";
     public static final String kCenterAuton = "Center Auton";
-    public static final String ktwoballAuton = "Two ball Auton";
+    public static final String ktwoballAutona1 = "Two ball Auton a1";
+    public static final String ktwoballAutona2 = "Two ball Auton a2";
     public static Timer m_timer = new Timer();
   
   

@@ -21,7 +21,7 @@ public class LeftAuton {
           DriveTrain.driveForward(.3);
         }
         else if(Constant.m_timer.get() > 1.5 & Constant.m_timer.get() < 1.9){
-          DriveTrain.turnLeft(.3);
+         // DriveTrain.turnLeft(.3);
         }
         else if(Constant.m_timer.get() > 1.9 & Constant.m_timer.get() < 4.4){
          Intake.PewPew(Constant.shooterSpeed);
