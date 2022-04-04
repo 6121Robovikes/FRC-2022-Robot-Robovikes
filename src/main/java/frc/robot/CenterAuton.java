@@ -19,10 +19,11 @@ public class CenterAuton {
           else if(Constant.m_timer.get() > 0 & Constant.m_timer.get() < 2){
             Intake.PewPew(Constant.shooterSpeed);
         }
-          else if(Constant.m_timer.get() > 2 & Constant.m_timer.get() < 8){
-            DriveTrain.driveForward(-.3);
+          else if(Constant.m_timer.get() > 2 & Constant.m_timer.get() < 3.5){
+            DriveTrain.driveForward(-.5);
+            Intake.StopIntake();
         }
-          else if(Constant.m_timer.get() > 8){
+          else if(Constant.m_timer.get() > 3.5){
             DriveTrain.driveForward(0);
           }
           

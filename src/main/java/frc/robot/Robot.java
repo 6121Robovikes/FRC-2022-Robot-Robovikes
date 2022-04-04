@@ -61,6 +61,7 @@ public class Robot extends TimedRobot {
     chooser.addOption("Center Auton", Constant.kCenterAuton);
     chooser.addOption("two ball auton a1", Constant.ktwoballAutona1);
     chooser.addOption("two ball auton a2", Constant.ktwoballAutona2);
+    chooser.addOption("two ball auton b3", Constant.ktwoballAutonb3);
     SmartDashboard.putData(chooser);
     SmartDashboard.putString("Auton selected: ", chooser.getSelected());
   }
@@ -96,6 +97,12 @@ public class Robot extends TimedRobot {
     else if(chooser.getSelected().equals(Constant.ktwoballAutona2)){
       TwoBallAutonA2.runAuton();
     }
+    else if(chooser.getSelected().equals(Constant.ktwoballAutonb3)){
+      TwoBallAutonB.runAuton();
+    }
+   // else if(chooser.getSelected().equals(Constant.ktwoballAutonb2)){
+    //  TwoBallAutonB2.runAuton();
+  //  }
     else{
       MiddleAuton.middleAuton();
     }
@@ -130,6 +137,14 @@ public class Robot extends TimedRobot {
   double rightDistanceCentimeters = rightRawValue * voltageScaleFactor * 0.125;
   SmartDashboard.putNumber("left distance", (int)leftDistanceCentimeters);
   SmartDashboard.putNumber("right distance", (int)rightDistanceCentimeters);
+  if((leftDistanceCentimeters -rightDistanceCentimeters) < 1 && (leftDistanceCentimeters -rightDistanceCentimeters) >0 
+  || (leftDistanceCentimeters -rightDistanceCentimeters) >-1 && (leftDistanceCentimeters -rightDistanceCentimeters) <0  ){
+    Constant.robotAligned = true;
+  }
+  else{
+    Constant.robotAligned = false;
+  }
+  SmartDashboard.putBoolean( "Robot square +- 1.5cm" ,Constant.robotAligned);
     forward = -driver.getLeftY();
     turn = driver.getRightX() * Constant.speedMultiplier; // moved from negative to positive
     
