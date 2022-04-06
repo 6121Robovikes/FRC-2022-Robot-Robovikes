@@ -24,17 +24,17 @@ public class TwoBallAutonA2 {
             Arm.armStop();
             }
         }
-        if (Constant.m_timer.get() > 2 && Constant.m_timer.get() <= 2.6){
+        if (Constant.m_timer.get() > 2 && Constant.m_timer.get() <= 2.5){
             SmartDashboard.putString("Auton step : ", "2 intake on drive forward");
             Arm.armStop();
             Intake.OhmNom();
             DriveTrain.driveForward(.5);
            }  
-           if (Constant.m_timer.get() > 2.6 && Constant.m_timer.get() <= 3.1) {
+           if (Constant.m_timer.get() > 2.5 && Constant.m_timer.get() <= 3.0) {
             SmartDashboard.putString("Auton step : ", "3 stop");
                DriveTrain.driveForward(0);
            }
-           if (Constant.m_timer.get() > 3.1 && Constant.m_timer.get() <= 5.1) {
+           if (Constant.m_timer.get() > 3.0 && Constant.m_timer.get() <= 5.0) {
             if(Robot.upwardlimitswitch.get() == true) {
                 Intake.StopIntake();
                 Arm.armGoUp();
@@ -48,38 +48,38 @@ public class TwoBallAutonA2 {
             }
     
           }
-          if (Constant.m_timer.get() > 5.1 && Constant.m_timer.get() < 6.7) {
+          if (Constant.m_timer.get() > 5.0 && Constant.m_timer.get() < 6.6) {
               DriveTrain.differentialDrive.arcadeDrive(0, .48);
               //ball picked up and turning
           }
-          if(Constant.m_timer.get() > 6.7 && Constant.m_timer.get() < 7.3) {
+          if(Constant.m_timer.get() > 6.6 && Constant.m_timer.get() < 7.2) {
             DriveTrain.driveForward(0);
             //stop turning
           }
-         if(Constant.m_timer.get() > 7.3 && Constant.m_timer.get() < 8.1) {
+         if(Constant.m_timer.get() > 7.2 && Constant.m_timer.get() < 8.5) {
              DriveTrain.driveForward(.5);
              //move forward after ball pickup turn
          }
-         if(Constant.m_timer.get() > 8.1 && Constant.m_timer.get() < 9.6) {
+         if(Constant.m_timer.get() > 8.5 && Constant.m_timer.get() < 9.0) {
              DriveTrain.driveForward(0);
              //stop
          }
         
-         if(Constant.m_timer.get() > 9.6 && Constant.m_timer.get() < 10.1) {
+         if(Constant.m_timer.get() > 9.0 && Constant.m_timer.get() < 9.4) { //.1 less
              DriveTrain.differentialDrive.arcadeDrive(0, -.48);
              //align to goal turn
          }
          
-         if(Constant.m_timer.get() > 10.1 && Constant.m_timer.get() < 11.7) {
+         if(Constant.m_timer.get() > 9.4 && Constant.m_timer.get() < 11.0) {
              DriveTrain.driveForward(.5);
              //stop
          }
-         if(Constant.m_timer.get() >11.7 && Constant.m_timer.get() < 12.2) {
+         if(Constant.m_timer.get() > 11.0 && Constant.m_timer.get() < 11.5) {
            Intake.PewPew(Constant.shooterSpeed);
             //final drive to goal
          }
 
-         if(Constant.m_timer.get() >12.2 && Constant.m_timer.get() < 13.7) {
+         if(Constant.m_timer.get() > 11.5 && Constant.m_timer.get() < 13.0) {
              Intake.StopIntake();
              DriveTrain.driveForward(-.5);
          }

@@ -204,7 +204,7 @@ public class Robot extends TimedRobot {
   /*
   * intake controls
   */
-    if(operator.getRawButton(12)){
+    if(operator.getRawButton(14)){
         Intake.OhmNom();
     }//button 12 pressed intake ball
     else if(operator.getRawButton(13)){

@@ -33,11 +33,11 @@ public class TwoBallAutonB {
             Intake.OhmNom();
             DriveTrain.driveForward(.5);
            }  
-           if (Constant.m_timer.get() > 2.6 && Constant.m_timer.get() <= 3.6) {
+           if (Constant.m_timer.get() > 2.6 && Constant.m_timer.get() <= 3.1) {
             SmartDashboard.putString("Auton step : ", "3 stop");
                DriveTrain.driveForward(0);
            }
-           if (Constant.m_timer.get() > 3.6 && Constant.m_timer.get() <= 5.6) {
+           if (Constant.m_timer.get() > 3.1 && Constant.m_timer.get() <= 5.1) {
             if(Robot.upwardlimitswitch.get() == true) {
                 Intake.StopIntake();
                 Arm.armGoUp();
@@ -51,27 +51,27 @@ public class TwoBallAutonB {
             }
     
           }
-          if (Constant.m_timer.get() > 5.6 && Constant.m_timer.get() < 7.2) {
+          if (Constant.m_timer.get() > 5.1 && Constant.m_timer.get() < 6.5) {
               DriveTrain.differentialDrive.arcadeDrive(0, -.48);
           }
-          if(Constant.m_timer.get() > 7.2 && Constant.m_timer.get() < 8.2) {
+          if(Constant.m_timer.get() > 6.5 && Constant.m_timer.get() < 7.0) {
             DriveTrain.driveForward(0);
           }
-         if(Constant.m_timer.get() > 8.2 && Constant.m_timer.get() < 10.2) {
+         if(Constant.m_timer.get() > 7.0 && Constant.m_timer.get() < 9.0) {
              DriveTrain.driveForward(.5);
              // move longer and turn less
          }
-         if(Constant.m_timer.get() > 10.2 && Constant.m_timer.get() < 10.8) {
+         if(Constant.m_timer.get() > 9.0 && Constant.m_timer.get() < 9.5 ) {
              DriveTrain.driveForward(0);
          }
-         if(Constant.m_timer.get() > 10.8 && Constant.m_timer.get() < 11.4 ) {
+         if(Constant.m_timer.get() > 9.5 && Constant.m_timer.get() < 10.1 ) {
              Intake.PewPew(Constant.shooterSpeed);
          }
-         if(Constant.m_timer.get() > 11.4 && Constant.m_timer.get() < 12.9) {
+         if(Constant.m_timer.get() > 10.1 && Constant.m_timer.get() < 11.6) {
              Intake.StopIntake();
              DriveTrain.driveForward(-.5);
          }
-         if(Constant.m_timer.get() > 12.9) {
+         if(Constant.m_timer.get() > 11.6) {
              DriveTrain.driveForward(0);
          }
         }
