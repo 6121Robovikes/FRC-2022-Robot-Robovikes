@@ -7,7 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /** Add your docs here. */
-public class TwoBallAutonA2 {
+public class ThreeBallAutonA2 {
     
     
     public static void runAuton() {
@@ -52,34 +52,34 @@ public class TwoBallAutonA2 {
               DriveTrain.differentialDrive.arcadeDrive(0, .48);
               //ball picked up and turning
           }
-          if(Constant.m_timer.get() > 6.7 && Constant.m_timer.get() < 7.3) {
+          if(Constant.m_timer.get() > 6.7 && Constant.m_timer.get() < 6.95) {
             DriveTrain.driveForward(0);
             //stop turning
           }
-         if(Constant.m_timer.get() > 7.3 && Constant.m_timer.get() < 8.1) {
+         if(Constant.m_timer.get() > 6.95 && Constant.m_timer.get() < 7.75) {
              DriveTrain.driveForward(.5);
              //move forward after ball pickup turn
          }
-         if(Constant.m_timer.get() > 8.1 && Constant.m_timer.get() < 9.6) {
+         if(Constant.m_timer.get() > 7.75 && Constant.m_timer.get() < 8.00) {
              DriveTrain.driveForward(0);
              //stop
          }
         
-         if(Constant.m_timer.get() > 9.6 && Constant.m_timer.get() < 10.1) {
+         if(Constant.m_timer.get() > 8.00 && Constant.m_timer.get() < 8.5) {
              DriveTrain.differentialDrive.arcadeDrive(0, -.48);
              //align to goal turn
          }
          
-         if(Constant.m_timer.get() > 10.1 && Constant.m_timer.get() < 11.7) {
+         if(Constant.m_timer.get() > 8.5 && Constant.m_timer.get() < 8.75) {
              DriveTrain.driveForward(.5);
              //stop
          }
-         if(Constant.m_timer.get() >11.7 && Constant.m_timer.get() < 12.2) {
+         if(Constant.m_timer.get() > 8.75 && Constant.m_timer.get() < 9) {
            Intake.PewPew(Constant.shooterSpeed);
             //final drive to goal
          }
 
-         if(Constant.m_timer.get() >12.2 && Constant.m_timer.get() < 13.7) {
+         if(Constant.m_timer.get() > 9 && Constant.m_timer.get() < 10.5) {
              Intake.StopIntake();
              DriveTrain.driveForward(-.5);
          }

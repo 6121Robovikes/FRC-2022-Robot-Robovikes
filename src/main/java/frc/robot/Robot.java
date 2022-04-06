@@ -62,6 +62,7 @@ public class Robot extends TimedRobot {
     chooser.addOption("two ball auton a1", Constant.ktwoballAutona1);
     chooser.addOption("two ball auton a2", Constant.ktwoballAutona2);
     chooser.addOption("two ball auton b3", Constant.ktwoballAutonb3);
+    chooser.addOption("three ball auton a2", Constant.kthreeballAutona2);
     SmartDashboard.putData(chooser);
     SmartDashboard.putString("Auton selected: ", chooser.getSelected());
   }
@@ -100,6 +101,10 @@ public class Robot extends TimedRobot {
     else if(chooser.getSelected().equals(Constant.ktwoballAutonb3)){
       TwoBallAutonB.runAuton();
     }
+    else if(chooser.getSelected().equals(Constant.kthreeballAutona2)){
+      ThreeBallAutonA2.runAuton();
+    }
+       
    // else if(chooser.getSelected().equals(Constant.ktwoballAutonb2)){
     //  TwoBallAutonB2.runAuton();
   //  }

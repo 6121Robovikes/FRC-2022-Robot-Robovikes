@@ -56,27 +56,27 @@ public class TwoBallAutonA {
             }
 
         }
-        if (Constant.m_timer.get() > 5.5 && Constant.m_timer.get() < 7.2) {
+        if (Constant.m_timer.get() > 5.5 && Constant.m_timer.get() < 7.0) {
             DriveTrain.differentialDrive.arcadeDrive(0, .48);
         }
-        if (Constant.m_timer.get() > 7.2 && Constant.m_timer.get() < 7.7) {
+        if (Constant.m_timer.get() > 7.0 && Constant.m_timer.get() < 7.5) {
             DriveTrain.driveForward(0);
         }
-        if (Constant.m_timer.get() > 7.7 && Constant.m_timer.get() < 9.7) {
+        if (Constant.m_timer.get() > 7.5 && Constant.m_timer.get() < 9.5) {
             DriveTrain.driveForward(.5);
             // move longer and turn less
         }
-        if (Constant.m_timer.get() > 9.7 && Constant.m_timer.get() < 10.2) {
+        if (Constant.m_timer.get() > 9.5 && Constant.m_timer.get() < 10.0) {
             DriveTrain.driveForward(0);
         }
-        if (Constant.m_timer.get() > 10.2 && Constant.m_timer.get() < 10.7) {
+        if (Constant.m_timer.get() > 10.0 && Constant.m_timer.get() < 10.5) {
             Intake.PewPew(Constant.shooterSpeed);
         }
-        if (Constant.m_timer.get() > 10.7 && Constant.m_timer.get() < 12.7) {
+        if (Constant.m_timer.get() > 10.5 && Constant.m_timer.get() < 12.5) {
             DriveTrain.driveForward(-.5);
             Intake.StopIntake();
         }
-        if (Constant.m_timer.get() > 12.7) {
+        if (Constant.m_timer.get() > 12.5) {
             DriveTrain.driveForward(0);
         }
     }

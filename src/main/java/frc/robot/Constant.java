@@ -23,6 +23,7 @@ public class Constant {
     public static final String ktwoballAutona1 = "Two ball Auton a1";
     public static final String ktwoballAutona2 = "Two ball Auton a2";
     public static final String ktwoballAutonb3 = "Two ball Auton b3";
+    public static final String kthreeballAutona2 = "Three ball Auton a2";
     public static boolean robotAligned = false;
     public static Timer m_timer = new Timer();
   
