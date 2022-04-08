@@ -48,38 +48,38 @@ public class TwoBallAutonA2 {
             }
     
           }
-          if (Constant.m_timer.get() > 5.0 && Constant.m_timer.get() < 6.6) {
+          if (Constant.m_timer.get() > 5.0 && Constant.m_timer.get() < 6.8) { // adjusted by .2
               DriveTrain.differentialDrive.arcadeDrive(0, .48);
               //ball picked up and turning
           }
-          if(Constant.m_timer.get() > 6.6 && Constant.m_timer.get() < 7.2) {
+          if(Constant.m_timer.get() > 6.8 && Constant.m_timer.get() < 7.4) {
             DriveTrain.driveForward(0);
             //stop turning
           }
-         if(Constant.m_timer.get() > 7.2 && Constant.m_timer.get() < 8.5) {
+         if(Constant.m_timer.get() > 7.4 && Constant.m_timer.get() < 8.7) {
              DriveTrain.driveForward(.5);
              //move forward after ball pickup turn
          }
-         if(Constant.m_timer.get() > 8.5 && Constant.m_timer.get() < 9.0) {
+         if(Constant.m_timer.get() > 8.7 && Constant.m_timer.get() < 9.2) {
              DriveTrain.driveForward(0);
              //stop
          }
         
-         if(Constant.m_timer.get() > 9.0 && Constant.m_timer.get() < 9.4) { //.1 less
+         if(Constant.m_timer.get() > 9.2 && Constant.m_timer.get() < 9.6) { //.1 less
              DriveTrain.differentialDrive.arcadeDrive(0, -.48);
              //align to goal turn
          }
          
-         if(Constant.m_timer.get() > 9.4 && Constant.m_timer.get() < 11.0) {
+         if(Constant.m_timer.get() > 9.6 && Constant.m_timer.get() < 11.2) {
              DriveTrain.driveForward(.5);
              //stop
          }
-         if(Constant.m_timer.get() > 11.0 && Constant.m_timer.get() < 11.5) {
+         if(Constant.m_timer.get() > 11.2 && Constant.m_timer.get() < 11.7) {
            Intake.PewPew(Constant.shooterSpeed);
             //final drive to goal
          }
 
-         if(Constant.m_timer.get() > 11.5 && Constant.m_timer.get() < 13.0) {
+         if(Constant.m_timer.get() > 11.7 && Constant.m_timer.get() < 13.2) {
              Intake.StopIntake();
              DriveTrain.driveForward(-.5);
          }

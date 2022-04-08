@@ -13,9 +13,10 @@ public class Constant {
     public static final double slowSpeed = 0.55; // speed of drivetrain when trigger held
     public static final double slowSpeedTurn = 0.7; // speed of drivetrain when trigger held
     public static final double turnMultiplier = 0.9; 
-    public static final double shooterSpeed = 0.9; // speed for intake while shooting
+    public static final double shooterSpeed = 0.91; // speed for intake while shooting
     public static final double slowShootSpeed = 0.7; // speed for intake while defense throwing
     public static final double intakeSpeed = 0.5; // speed for intake of balls
+    public static final double turbospeed = 0.7; // fast speed for drivetrain
     public static final String kMiddleAuton = "Middle Auton";
     public static final String kLeftAuton = "Left Auton";
     public static final String kRightAuton = "Right Auton";

@@ -160,6 +160,9 @@ public class Robot extends TimedRobot {
     if(driver.getRightBumper() == true){
       DriveTrain.differentialDrive.arcadeDrive((forward * Constant.slowSpeed), (turn * Constant.slowSpeedTurn));
     } // end if driver holding right bumper
+    else if(driver.getLeftBumper() == true){
+      DriveTrain.differentialDrive.arcadeDrive((forward * Constant.turbospeed), (turn * Constant.turnMultiplier));
+    }
     else{
       DriveTrain.differentialDrive.arcadeDrive((forward * Constant.speedMultiplier), (turn *Constant.turnMultiplier));
     } // end if user not holding right bumper
